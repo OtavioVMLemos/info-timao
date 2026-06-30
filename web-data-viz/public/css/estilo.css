@@ -109,7 +109,7 @@ body {
 }
 
 .box img {
-    width:180px;
+    width:200px;
     height:170px;
     border:2px solid #000000;
 }
@@ -132,11 +132,14 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.box p{
+  width: 400px;
+}
 
 /* FOOTER */
 
 .footer {
-  background-color: #ff000081;
+  background-color: #00000081;
   height: 100px;
   color: #fff;
   display: flex;
@@ -167,22 +170,24 @@ body {
 }
 
 .card {
-  width: 50%;
-  background-color: #e5e5e5;
+  width: 30%;
+  background-color: #000000;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: rgb(255, 255, 255);
   flex-direction: column;
   height: fit-content;
-  padding: 20px 0;
+  padding: 100px 0;
 }
 
 .card h2 {
   margin: 0;
   font-size: 30px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 
 .formulario {
   display: flex;
@@ -227,14 +232,15 @@ body {
   border: 0;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
   color: #000000;
   background-color: #ffffff;
-  width: 120px;
-  height: 30px;
+  width: 150px;
+  height: 60px;
   align-self: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
+
 
 .loading-div {
   width: 50px;
