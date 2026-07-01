@@ -166,7 +166,7 @@ body {
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/arena.jpeg');
+  background-image: url('../assets/imgs/imagemFundoDesfoque.png');
   background-size: cover;
 }
 

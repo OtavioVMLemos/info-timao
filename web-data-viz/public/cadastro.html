@@ -19,13 +19,13 @@
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
+      <h1 class="titulo">INFO-<span>TIMÃO</span></h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
         </li>
         <li>
-          <a href="simulador.html">Simulador</a>
+          <a href="simulador.html">Quizz</a>
         </li>
         <li>|</li>
         <li>
@@ -54,10 +54,6 @@
                          Assim que inserir vá para o script abaixo.
                      -->
           <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
@@ -79,7 +75,7 @@
           <img src="./assets/circle-loading.gif" id="loading-gif" />
         </div>
 
-        <div id="div_erros_login"></div>
+        <div id="div_mensagem"></div>
       </div>
     </div>
   </div>
@@ -97,51 +93,77 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
   function cadastrar() {
-    // aguardar();
+    let nome = nome_input.value;
+    let email = email_input.value;
+    let senha = senha_input.value;
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    div_mensagem.innerHTML = "";
 
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+    if (nome.trim() == "" || email.trim() == "" || senha.trim() == '' ) {
+        div_mensagem.style.color = "red";
+        div_mensagem.innerHTML = "⚠️ Preencha todos os campos para continuar!";
+        return false;
+    } 
+    if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+        div_mensagem.style.color = "red";
+        div_mensagem.innerHTML = "⚠️ Por favor, insira um e-mail válido.";
+        return false;
+    } 
+    if (senha.length < 6) {
+        div_mensagem.style.color = "red";
+        div_mensagem.innerHTML = "⚠️ A senha deve ter pelo menos 6 caracteres.";
+        return false;
+    } 
+    else {
+        div_mensagem.style.color = "green";
+        div_mensagem.innerHTML = `✅ Cadastro realizado! Bem-vindo ao bando de loucos, ${nome}!`;
     }
+  // // Array para armazenar empresas cadastradas para validação de código de ativação 
+  // let listaEmpresasCadastradas = [];
+
+  // function cadastrar() {
+  //   // aguardar();
+
+  //   //Recupere o valor da nova input pelo nome do id
+  //   // Agora vá para o método fetch logo abaixo
+  //   var nomeVar = nome_input.value;
+  //   var emailVar = email_input.value;
+  //   var senhaVar = senha_input.value;
+  //   var confirmacaoSenhaVar = confirmacao_senha_input.value;
+  //   var codigoVar = codigo_input.value;
+  //   var idEmpresaVincular
+
+  //   // Verificando se há algum campo em branco
+  //   if (
+  //     nomeVar == "" ||
+  //     emailVar == "" ||
+  //     senhaVar == "" ||
+  //     confirmacaoSenhaVar == "" ||
+  //     codigoVar == ""
+  //   ) {
+  //     cardErro.style.display = "block";
+  //     mensagem_erro.innerHTML =
+  //       "(Mensagem de erro para todos os campos em branco)";
+
+  //     finalizarAguardar();
+  //     return false;
+  //   } else {
+  //     setInterval(sumirMensagem, 5000);
+  //   }
 
     // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
+    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      // if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+        // idEmpresaVincular = listaEmpresasCadastradas[i].id
+        // console.log("Código de ativação válido.");
+        // break;
+    //   } else {
+    //     cardErro.style.display = "block";
+    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+    //     finalizarAguardar();
+    //   }
+    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {

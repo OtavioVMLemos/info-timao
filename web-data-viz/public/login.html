@@ -59,14 +59,14 @@
                         <span>Senha:</span>
                         <input id="senha_input" type="password" placeholder="******">
                     </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
+                    <button class="botao" onclick="login()">Entrar</button>
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/circle-loading.gif" id="loading-gif">
                 </div>
 
-                <div id="div_erros_login"></div>
+                <div id="div_mensagem"></div>
             </div>
         </div>
     </div>
@@ -85,25 +85,49 @@
 
 <script>
 
+    function login() {
 
-    function entrar() {
-        aguardar();
+       let emailVar = email_input.value;
+       let senhaVar = senha_input.value;
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        div_mensagem.innerHTML = "";
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+
+           div_mensagem.style.color = "red";
+           div_mensagem.innerHTML=
+           "⚠️ Preencha todos os campos!";
+
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+       if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
+
+       div_mensagem.style.color = "red";
+       div_mensagem.innerHTML =
+       "⚠️ Email inválido!";
+
+           return false;
+    }
+     /////////////////////
+    // function entrar() {
+    //     aguardar();
+
+    //     var emailVar = email_input.value;
+    //     var senhaVar = senha_input.value;
+
+    //     if (emailVar == "" || senhaVar == "") {
+    //         cardErro.style.display = "block"
+    //         mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+    //         finalizarAguardar();
+    //         return false;
+    //     }
+    //     else {
+    //         setInterval(sumirMensagem, 5000)
+    //     }
+
+    //     console.log("FORM LOGIN: ", emailVar);
+    //     console.log("FORM SENHA: ", senhaVar);
 
         fetch("/usuarios/autenticar", {
             method: "POST",
