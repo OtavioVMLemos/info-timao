@@ -286,6 +286,11 @@ body {
   font-weight: 500;
   font-size: 20px;
 }
+.container #div_mensagem{
+    margin-top: 20px;
+    text-align: center;
+    font-family: serif;
+}
 
 .formulario .tipo_campo {
   font-size: 20px;
@@ -334,6 +339,8 @@ input {
 
 .simulador {
   color: white;
+  background-image: url('../assets/imgs/imagemFundoDesfoque.png');
+  background-size: cover;
 }
 
 .simulador .container {

@@ -66,9 +66,6 @@
             <input id="senha_input" type="password" placeholder="******" />
           </div>
           <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -101,17 +98,17 @@
     div_mensagem.innerHTML = "";
 
     if (nome.trim() == "" || email.trim() == "" || senha.trim() == '' ) {
-        div_mensagem.style.color = "red";
+        div_mensagem.style.color = "white";
         div_mensagem.innerHTML = "⚠️ Preencha todos os campos para continuar!";
         return false;
     } 
     if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
-        div_mensagem.style.color = "red";
+        div_mensagem.style.color = "white";
         div_mensagem.innerHTML = "⚠️ Por favor, insira um e-mail válido.";
         return false;
     } 
     if (senha.length < 6) {
-        div_mensagem.style.color = "red";
+        div_mensagem.style.color = "white";
         div_mensagem.innerHTML = "⚠️ A senha deve ter pelo menos 6 caracteres.";
         return false;
     } 
