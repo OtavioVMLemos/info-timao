@@ -20,7 +20,7 @@
     <!--header inicio-->
     <div class="header">
         <div class="container">
-        <h1 class="titulo">INFO-<span>TIMÃO</span></h1>
+            <h1 class="titulo">INFO-<span>TIMÃO</span></h1>
             <ul class="navbar">
                 <li>
                     <a href="./index.html">Inicial</a>
@@ -39,10 +39,59 @@
 
 
     <!-- simulador inicio -->
-    <div class="simulador">
+    <!-- <div class="simulador">
         <div class="container">
+            <div class="card">
+                <form>
+                    <p>Em que ano o Corinthians ganhou sua primeira Copa do Brasil</p>
+
+                    <input type="radio" id="windows" name="sistema_op" value="windows">
+                    <label for="windows">Windows</label><br>
+
+                    <input type="radio" id="linux" name="sistema_op" value="linux">
+                    <label for="linux">Linux</label><br>
+
+                    <input type="radio" id="mac" name="sistema_op" value="mac">
+                    <label for="mac">MacOS</label><br>
+                </form>
+            </div>
+        </div>
+    </div> -->
+    <div class="login">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card card-cadastro">
+                <div class="pergunta">
+                    <h4>Pergunta 1/5</h4>
+                </div>
+                <div class="img1">
+                    <img src="assets/imgs/1995Corinthians.jpg" alt="">
+                </div>
+                <div class="">
+                    <h4>Quando o corinthians ganhou a primeira Copa do Brasil</h2>
+                    
+                    <input type="radio" id="1995" name="pergunta1" value="windows">
+                    <label for="windows">1995</label><br>
+
+                    <input type="radio" id="1996" name="pergunta1" value="linux">
+                    <label for="linux">1996</label><br>
+
+                    <input type="radio" id="2002" name="pergunta1" value="mac">
+                    <label for="mac">2002</label><br>
+
+                    <input type="radio" id="2009" name="pergunta1" value="mac">
+                    <label for="mac">2002</label><br>
+                    </div>
+                    <button class="botao" onclick="pergunta1()">Confirmar</button>
+                <div id="div_mensagem"></div>
+            </div>
         </div>
     </div>
+
     <!-- simulador fim -->
 
     <!--footer inicio-->
@@ -55,5 +104,9 @@
 
 
 </body>
-
 </html>
+<script>
+    function pergunta1 (){
+
+    }
+</script>

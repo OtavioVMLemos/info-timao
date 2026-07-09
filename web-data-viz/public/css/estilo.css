@@ -302,6 +302,17 @@ body {
   flex-direction: column;
 }
 
+.pergunta{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.img1{
+  height: 270px;
+  width: 270px;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  border: #ED145B 2px solid;
+}
 input {
   margin-bottom: 10px;
   border: 2px solid #32b9cd;
