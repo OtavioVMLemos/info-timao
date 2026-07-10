@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AquaTech | Simulador</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+    <!--header inicio-->
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">INFO-<span>TIMÃO</span></h1>
+            <ul class="navbar">
+                <li>
+                    <a href="./index.html">Inicial</a>
+                </li>
+                <li class="agora">Quizz</li>
+                <li>|</li>
+                <li>
+                    <a href="./login.html">Login</a>
+                </li>
+                <li>
+                    <a href="./login.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- simulador inicio -->
+    <!-- <div class="simulador">
+        <div class="container">
+            <div class="card">
+                <form>
+                    <p>Em que ano o Corinthians ganhou sua primeira Copa do Brasil</p>
+
+                    <input type="radio" id="windows" name="sistema_op" value="windows">
+                    <label for="windows">Windows</label><br>
+
+                    <input type="radio" id="linux" name="sistema_op" value="linux">
+                    <label for="linux">Linux</label><br>
+
+                    <input type="radio" id="mac" name="sistema_op" value="mac">
+                    <label for="mac">MacOS</label><br>
+                </form>
+            </div>
+        </div>
+    </div> -->
+    <div class="login">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card2">
+                <div class="pergunta">
+                    <h2>Pergunta 4/5</h2>
+                </div>
+                <div class="img1">
+                    <img src="assets/imgs/bomRETIRO.jpeg" alt="">
+                </div>
+                <div class="opcoes">
+                    <form>
+                    <h3>Em qual bairro o Corinthians foi fundado?</h3>
+                    
+                    <input type="radio" id="ipt_mooca"" name="pergunta4" value="Mooca">
+                    <label for="Mooca">Mooca</label><br>
+
+                    <input type="radio" id="ipt_brás" name="pergunta4" value="Brás">
+                    <label for="Brás">Brás</label><br>
+
+                    <input type="radio" id="ipt_bomRetiro" name="pergunta4" value="Bom Retiro ">
+                    <label for="Bom Retiro ">Bom Retiro </label><br>
+
+                    <input type="radio" id="ipt_tatuapé name="pergunta4" value="Tatuapé">
+                    <label for="Tatuapé">Tatuapé</label><br>
+
+                    <input type="radio" id="ipt_barraFunda name="pergunta4" value="Barra Funda">
+                    <label for="Barra Funda">Barra Funda</label><br>
+                    </form>
+                    </div>
+                    <div class="botao_opcoes">
+                    <button class="botao_opcoes" onclick="pergunta1()">Confirmar</button>
+                    </div>
+                <div id="div_mensagem"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- simulador fim -->
+
+    <!--footer inicio-->
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
+        </div>
+    </div>
+    <!--footer fim-->
+
+
+</body>
+</html>
