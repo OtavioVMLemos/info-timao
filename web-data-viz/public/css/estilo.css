@@ -326,10 +326,10 @@ body {
 
 .img1{
   height: 270px;
-  width: 270px;
   display: flex;
   justify-content: center;
   border: 3px solid #fff;
+  border-radius: 5px;
 }
 input {
   margin-bottom: 10px;
