@@ -200,6 +200,7 @@ body {
   flex-direction: column;
   height: 60%;
   padding: 100px 0;
+  margin-top: -30px;
 }
 
 .card h2 {
@@ -319,11 +320,10 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: center;
+  margin-top: -70px;
 }
 
-.opcoes h4{
 
-}
 .img1{
   height: 270px;
   width: 270px;
@@ -347,10 +347,10 @@ input {
   font-size: 20px;
   color: #000000;
   background-color: #ffffff;
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 40px;
   align-self: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .btn {
   font-family: "Barlow", sans-serif;
