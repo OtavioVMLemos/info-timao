@@ -78,13 +78,13 @@
                     <input type="radio" id="ipt_mooca"" name="pergunta4" value="Mooca">
                     <label for="Mooca">Mooca</label><br>
 
-                    <input type="radio" id="ipt_brás" name="pergunta4" value="Brás">
+                    <input type="radio" id="ipt_bras" name="pergunta4" value="Brás">
                     <label for="Brás">Brás</label><br>
 
                     <input type="radio" id="ipt_bomRetiro" name="pergunta4" value="Bom Retiro ">
                     <label for="Bom Retiro ">Bom Retiro </label><br>
 
-                    <input type="radio" id="ipt_tatuapé" name="pergunta4" value="Tatuapé">
+                    <input type="radio" id="ipt_tatuape" name="pergunta4" value="Tatuapé">
                     <label for="Tatuapé">Tatuapé</label><br>
 
                     <input type="radio" id="ipt_barraFunda" name="pergunta4" value="Barra Funda">
@@ -92,7 +92,7 @@
                     </form>
                     </div>
                     <div class="botao_opcoes">
-                    <button class="botao_opcoes" onclick="pergunta1()">Confirmar</button>
+                    <button class="botao_opcoes" onclick="pergunta4()">Confirmar</button>
                     </div>
                 <div id="div_mensagem"></div>
             </div>
@@ -112,3 +112,27 @@
 
 </body>
 </html>
+<script>
+    function pergunta4 (){
+       let mooca = (ipt_mooca.value)
+       let bras = (ipt_bras.value)
+       let bomRetiro = (ipt_bomRetiro.value)
+       let tatuape = (ipt_tatuape.value)
+       let barraFunda = (ipt_barraFunda.value) 
+
+       div_mensagem.innerHTML = "";
+
+       if(!mooca.checked && !bras.checked && !bomRetiro.checked && !tatuape.checked && !barraFunda.checked){
+        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+       else{
+        setTimeout(function () {
+
+                          window.location = "quizz5.html";
+
+                        }, 1000);
+
+       }
+    }
+</script>
