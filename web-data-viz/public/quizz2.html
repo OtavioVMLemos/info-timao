@@ -92,7 +92,7 @@
                     </form>
                     </div>
                     <div class="botao_opcoes">
-                    <button class="botao_opcoes" onclick="pergunta1()">Confirmar</button>
+                    <button class="botao_opcoes" onclick="pergunta2()">Confirmar</button>
                     </div>
                 <div id="div_mensagem"></div>
             </div>
@@ -112,3 +112,27 @@
 
 </body>
 </html>
+<script>
+    function pergunta2 (){
+       let marcelinho = (ipt_marcelinho.value)
+       let edilson = (ipt_edílson.value)
+       let luizao = (ipt_luizao.value)
+       let ricardinho = (ipt_ricardinho.value)
+       let vampeta = (ipt_vampeta.value) 
+
+       div_mensagem.innerHTML = "";
+
+       if(!marcelinho.checked && !edilson.checked && !luizao.checked && !ricardinho.checked && !vampeta.checked){
+        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+       else{
+        setTimeout(function () {
+
+                          window.location = "quizz3.html";
+
+                        }, 1000);
+
+       }
+    }
+</script>
