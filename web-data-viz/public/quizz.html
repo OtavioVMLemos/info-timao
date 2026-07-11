@@ -118,9 +118,21 @@
        let Ano1996 = (ipt_1996.value)
        let Ano2002 = (ipt_2002.value)
        let Ano2009 = (ipt_2009.value)
-       let Ano2003 = (ipt_2003.value)
+       let Ano2003 = (ipt_2003.value) 
 
+       div_mensagem.innerHTML = "";
 
-       if(Ano1995.checked)
+       if(!Ano1995.checked && !Ano1996.checked && !Ano2002.checked && !Ano2009.checked && !Ano2003.checked){
+        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+       else{
+        setTimeout(function () {
+
+                          window.location = "quizz2.html";
+
+                        }, 1000);
+
+       }
     }
 </script>
