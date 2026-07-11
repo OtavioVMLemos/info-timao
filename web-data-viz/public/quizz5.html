@@ -112,3 +112,27 @@
 
 </body>
 </html>
+<script>
+    function pergunta4 (){
+       let guerrero = ipt_guerrero
+       let cassio = ipt_cassio
+       let paulinho = ipt_paulinho
+       let pato = ipt_pato
+       let ralf = ipt_ralf
+
+       div_mensagem.innerHTML = "";
+
+       if(!guerrero.checked && !cassio.checked && !paulinho.checked && !pato.checked && !ralf.checked){
+        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+       else{
+        setTimeout(function () {
+
+                          window.location = "quizz5.html";
+
+                        }, 0);
+
+       }
+    }
+</script>
