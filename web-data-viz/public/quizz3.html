@@ -81,7 +81,7 @@
                     <input type="radio" id="ipt_Tite" name="pergunta3" value="Tite">
                     <label for="Tite">Tite</label><br>
 
-                    <input type="radio" id="ipt_FábioCarille" name="pergunta3" value="Fábio_Carille">
+                    <input type="radio" id="ipt_FabioCarille" name="pergunta3" value="Fábio_Carille">
                     <label for="Fábio_Carille">Luizão</label><br>
 
                     <input type="radio" id="ipt_OswaldoDeOliveira" name="pergunta3" value="Oswaldo_de_Oliveira">
@@ -92,7 +92,7 @@
                     </form>
                     </div>
                     <div class="botao_opcoes">
-                    <button class="botao_opcoes" onclick="pergunta1()">Confirmar</button>
+                    <button class="botao_opcoes" onclick="pergunta3()">Confirmar</button>
                     </div>
                 <div id="div_mensagem"></div>
             </div>
@@ -112,3 +112,27 @@
 
 </body>
 </html>
+<script>
+    function pergunta3 (){
+       let mano = (ipt_ManoMenezes.value)
+       let tite = (ipt_Tite.value)
+       let carille = (ipt_FábioCarille.value)
+       let oswaldo = (ipt_OswaldoDeOliveira.value)
+       let luxemburgo = (ipt_VanderleiLuxemburgo.value) 
+
+       div_mensagem.innerHTML = "";
+
+       if(!mano.checked && !tite.checked && !carille.checked && !oswaldo.checked && !luxemburgo.checked){
+        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+       else{
+        setTimeout(function () {
+
+                          window.location = "quizz4.html";
+
+                        }, 1000);
+
+       }
+    }
+</script>
