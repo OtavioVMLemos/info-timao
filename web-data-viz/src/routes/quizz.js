@@ -9,7 +9,7 @@ var quizzController = require("../controllers/quizzController");
 // });
 
 router.post("/cadastrarAvaliacaoCdb", function (req, res) {
-    avaliacaoController.cadastrarAvaliacaoCdb(req, res);
+    quizzController.cadastrarAvaliacaoCdb(req, res);
 });
 
 

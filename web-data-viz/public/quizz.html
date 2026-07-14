@@ -109,8 +109,12 @@
 
 
 </body>
-</html>
+</html>  
 <script>
+
+    let respotas = [];
+
+
     function pergunta1 (){
        let Ano1995 = ipt_1995
        let Ano1996 = ipt_1996
@@ -121,16 +125,32 @@
        div_mensagem.innerHTML = "";
 
        if(!Ano1995.checked && !Ano1996.checked && !Ano2002.checked && !Ano2009.checked && !Ano2003.checked){
-        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+         div_mensagem.innerHTML = ("Selecione alguma alternativa!")
         return 
        }
-       else{
+
+       if(Ano1995.checked){
+        respotas.push("A")
+       }
+       else if(Ano1996.checked){
+        respostas.push("B")
+       }
+       else if(Ano2002.checked){
+        respostas.push("C")
+       }
+       else if(Ano2009){
+        respostas.push("D")
+       }
+       else if(Ano2009){
+        respostas.push("E")
+       }
+
+       
         setTimeout(function () {
 
                           window.location = "quizz2.html";
 
                         }, 0);
-
-       }
-    }
-</script>
+  
+    }   
+</script>                           
