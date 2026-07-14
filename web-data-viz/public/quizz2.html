@@ -126,7 +126,23 @@
         div_mensagem.innerHTML = ("Selecione alguma alternativa!")
         return 
        }
-       else{
+
+       if(marcelinho.checked){
+        respotas.push("A")
+       }
+       else if(edilson.checked){
+        respostas.push("B")
+       }
+       else if(luizao.checked){
+        respostas.push("C")
+       }
+       else if(ricardinho.checked){
+        respostas.push("D")
+       }
+       else if(vampeta.checked){
+        respostas.push("E")
+       }
+
         setTimeout(function () {
 
                           window.location = "quizz3.html";
@@ -134,5 +150,4 @@
                         }, 0);
 
        }
-    }
 </script>
