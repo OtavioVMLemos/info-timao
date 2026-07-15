@@ -26,9 +26,7 @@
 
 function resultado(req, res){
     var fkUsuario = req.body.fkUsuario;
-    var Pontuacao  = req.body.fkPontuacao;
-    var dataRealizacao = req.body.dataRealizacao;
-
+    var Pontuacao  = req.body.Pontuacao;
 
      if (!fkUsuario) {         
         return res.status(400).send("Usuário não identificado!");
@@ -36,11 +34,8 @@ function resultado(req, res){
      else if (!Pontuacao) {
         return res.status(400).send("Pontuação está undefined!");
     }
-     else if (!PondataRealizacaotuacao) {
-        return res.status(400).send("Data Realizacao está undefined!");
-    }
 
-   quizzModel.resultado(fkUsuario, Pontuacao, dataRealizacao)
+    quizzModel.resultado(pontuacao, fkUsuario)
          .then(resultado => res.json(resultado))
          .catch(erro => {
              console.log(erro);
@@ -49,7 +44,7 @@ function resultado(req, res){
  }
 
 
-function respotasUsuario(req, res){
+function respostasUsuario(req, res){
     
     var respostaMarcada  = req.body.respostaMarcada ;
     var acertou = req.body.acertou;
@@ -57,20 +52,20 @@ function respotasUsuario(req, res){
     var fkResultado = req.body.fkResultado
 
 
-     if (!acertou) {         
+     if (acertou == undefined) {         
         return res.status(400).send("Usuário não identificado!");
      } 
      else if (!respostaMarcada) {
         return res.status(400).send("Resposta Marcada está undefined!");
    }
-    else if (!fkPergunta) {
+    else if (fkPergunta == undefined) {
         return res.status(400).send("Pergunta está undefined!");
    }
-    else if (!fkResultado) {
+    else if (fkResultado == undefined) {
         return res.status(400).send("Resultado está undefined!");
    }
     
-   quizzModel.respotasUsuario(respostaMarcada, acertou, fkPergunta, fkResultado)
+   quizzModel.respostasUsuario(respostaMarcada, acertou, fkPergunta, fkResultado)
          .then(resultado => res.json(resultado))
          .catch(erro => {
              console.log(erro);
@@ -79,5 +74,5 @@ function respotasUsuario(req, res){
 }
 module.exports = {
     resultado,
-    respotasUsuario
+    respostasUsuario
 }
