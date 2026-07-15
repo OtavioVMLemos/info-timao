@@ -112,3 +112,73 @@ function pergunta3 (){
 
                         }, 0);
     }
+ function pergunta4 (){
+       let mooca = ipt_mooca
+       let bras = ipt_bras
+       let bomRetiro = ipt_bomRetiro
+       let tatuape = ipt_tatuape
+       let barraFunda = ipt_barraFunda
+
+       div_mensagem.innerHTML = "";
+
+       if(!mooca.checked && !bras.checked && !bomRetiro.checked && !tatuape.checked && !barraFunda.checked){
+        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+        if(mooca.checked){
+        respostas.push("A")
+       }
+       else if(bras.checked){
+        respostas.push("B")
+       }
+       else if(bomRetiro.checked){
+        respostas.push("C")
+       }
+       else if(tatuape.checked){
+        respostas.push("D")
+       }
+       else if(barraFunda.checked){
+        respostas.push("E")
+       }
+
+        setTimeout(function () {
+
+                          window.location = "quizz4.html";
+
+                        }, 0);
+    }
+  function pergunta5 (){
+       let guerrero = ipt_guerrero
+       let cassio = ipt_cassio
+       let paulinho = ipt_paulinho
+       let pato = ipt_pato
+       let ralf = ipt_ralf
+
+       div_mensagem.innerHTML = "";
+
+       if(!guerrero.checked && !cassio.checked && !paulinho.checked && !pato.checked && !ralf.checked){
+        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+        if(guerrero.checked){
+        respostas.push("A")
+       }
+       else if(cassio.checked){
+        respostas.push("B")
+       }
+       else if(paulinho.checked){
+        respostas.push("C")
+       }
+       else if(pato.checked){
+        respostas.push("D")
+       }
+       else if(ralf.checked){
+        respostas.push("E")
+       }
+
+        setTimeout(function () {
+
+                          window.location = "dashboard.html";
+
+                        }, 0);
+    }

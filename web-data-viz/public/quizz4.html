@@ -8,7 +8,8 @@
 
     <title>AquaTech | Simulador</title>
 
-    <script src="./js/sessao.js"></script>
+    <script src="./js/sessao.js"></script>]
+    <script src="./js/quizz.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
@@ -112,27 +113,3 @@
 
 </body>
 </html>
-<script>
-    function pergunta4 (){
-       let mooca = ipt_mooca
-       let bras = ipt_bras
-       let bomRetiro = ipt_bomRetiro
-       let tatuape = ipt_tatuape
-       let barraFunda = ipt_barraFunda
-
-       div_mensagem.innerHTML = "";
-
-       if(!mooca.checked && !bras.checked && !bomRetiro.checked && !tatuape.checked && !barraFunda.checked){
-        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
-        return 
-       }
-       else{
-        setTimeout(function () {
-
-                          window.location = "quizz5.html";
-
-                        }, 0);
-
-       }
-    }
-</script>

@@ -9,7 +9,9 @@
     <title>AquaTech | Simulador</title>
 
     <script src="./js/sessao.js"></script>
+    <script src="./js/quizz.js"></script>
 
+    
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -92,7 +94,7 @@
                     </form>
                     </div>
                     <div class="botao_opcoes">
-                    <button class="botao_opcoes" onclick="pergunta1()">Confirmar</button>
+                    <button class="botao_opcoes" onclick="pergunta5()">Confirmar</button>
                     </div>
                 <div id="div_mensagem"></div>
             </div>
@@ -112,27 +114,3 @@
 
 </body>
 </html>
-<script>
-    function pergunta4 (){
-       let guerrero = ipt_guerrero
-       let cassio = ipt_cassio
-       let paulinho = ipt_paulinho
-       let pato = ipt_pato
-       let ralf = ipt_ralf
-
-       div_mensagem.innerHTML = "";
-
-       if(!guerrero.checked && !cassio.checked && !paulinho.checked && !pato.checked && !ralf.checked){
-        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
-        return 
-       }
-       else{
-        setTimeout(function () {
-
-                          window.location = "quizz5.html";
-
-                        }, 0);
-
-       }
-    }
-</script>
