@@ -34,3 +34,47 @@ function finalizarAguardar(texto) {
     }
 }
 
+function pergunta1(){
+
+    let respostas = [];
+
+
+    function pergunta1 (){
+       let Ano1995 = ipt_1995
+       let Ano1996 = ipt_1996
+       let Ano2002 = ipt_2002
+       let Ano2009 = ipt_2009
+       let Ano2003 = ipt_2003 
+
+       div_mensagem.innerHTML = "";
+
+       if(!Ano1995.checked && !Ano1996.checked && !Ano2002.checked && !Ano2009.checked && !Ano2003.checked){
+         div_mensagem.innerHTML = ("Selecione alguma alternativa!")
+        return 
+       }
+
+       if(Ano1995.checked){
+        respostas.push("A")
+       }
+       else if(Ano1996.checked){
+        respostas.push("B")
+       }
+       else if(Ano2002.checked){
+        respostas.push("C")
+       }
+       else if(Ano2009.checked){
+        respostas.push("D")
+       }
+       else if(Ano2003.checked){
+        respostas.push("E")
+       }
+
+       
+        setTimeout(function () {
+
+                          window.location = "quizz2.html";
+
+                        }, 0);
+  
+    }   
+}

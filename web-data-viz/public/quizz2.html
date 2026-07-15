@@ -9,6 +9,7 @@
     <title>AquaTech | Simulador</title>
 
     <script src="./js/sessao.js"></script>
+    <script src="./js/quizz.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
@@ -112,42 +113,3 @@
 
 </body>
 </html>
-<script>
-    function pergunta2 (){
-       let marcelinho = ipt_marcelinho
-       let edilson = ipt_edílson
-       let luizao = ipt_luizao
-       let ricardinho = ipt_ricardinho
-       let vampeta = ipt_vampeta 
-
-       div_mensagem.innerHTML = "";
-
-       if(!marcelinho.checked && !edilson.checked && !luizao.checked && !ricardinho.checked && !vampeta.checked){
-        div_mensagem.innerHTML = ("Selecione alguma alternativa!")
-        return 
-       }
-
-       if(marcelinho.checked){
-        respotas.push("A")
-       }
-       else if(edilson.checked){
-        respostas.push("B")
-       }
-       else if(luizao.checked){
-        respostas.push("C")
-       }
-       else if(ricardinho.checked){
-        respostas.push("D")
-       }
-       else if(vampeta.checked){
-        respostas.push("E")
-       }
-
-        setTimeout(function () {
-
-                          window.location = "quizz3.html";
-
-                        }, 0);
-
-       }
-</script>
