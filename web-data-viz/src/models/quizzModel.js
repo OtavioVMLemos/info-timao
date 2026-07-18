@@ -12,22 +12,22 @@ var database = require("../database/config")
 // }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function resultado(pontuacao, dataRealizacao, fkUsuario) {
+// function resultado(pontuacao, dataRealizacao, fkUsuario) {
 
-      var instrucaoSql = `
-            INSERT INTO resultado (pontuacao, fkUsuario)
-            VALUES ('${pontuacao}','${fkUsuario}');
-        `;
+//       var instrucaoSql = `
+//             INSERT INTO resultado (pontuacao, fkUsuario)
+//             VALUES ('${pontuacao}','${fkUsuario}');
+//         `;
 
-    console.log("Executando SQL:\n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
+//     console.log("Executando SQL:\n" + instrucaoSql);
+//     return database.executar(instrucaoSql);
+// }
 
-function respostaUsuario(respostaMarcada, acertou, fkResultado, fkPergunta) {
+function respostaUsuario(respostaMarcada, acertou, fkUsuario) {
 
        var instrucaoSql = `
-            INSERT INTO resposta_usuario (respostaMarcada, acertou, fkResultado, fkPergunta)
-            VALUES ('${respostaMarcada}', '${acertou}', '${fkResultado}', '${fkPergunta}');
+            INSERT INTO resposta_usuario (respostaMarcada, acertou, fkUsuario)
+            VALUES ('${respostaMarcada}', '${acertou}', '${fkUsuario}');
         `;
 
     console.log("Executando SQL:\n" + instrucaoSql);
@@ -35,6 +35,5 @@ function respostaUsuario(respostaMarcada, acertou, fkResultado, fkPergunta) {
 }
 
 module.exports = {
-    resultado,
     respostaUsuario
 };

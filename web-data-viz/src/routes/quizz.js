@@ -1,5 +1,5 @@
 var express = require("express");
-var Router = express.Router();
+var router = express.Router();
 
 var quizzController = require("../controllers/quizzController");
 
@@ -7,12 +7,12 @@ var quizzController = require("../controllers/quizzController");
 // router.post("/cadastrarAvaliacaoBra", function (req, res) {
 //     avaliacaoController.cadastrarAvaliacaoBra(req, res);
 // });
-router.post("/resultado", function (req, res) {
-    quizzController.cadastrarPontuacao(req, res);
+// router.post("/resultado", function (req, res) {
+//     quizzController.resultado(req, res);
+// })  
+router.post("/respostas", function (req, res) {
+    quizzController.respostasUsuario(req, res);
 })  
-router.post("/respotas", function (req, res) {
-    quizzController.cadastrarRespostas(req, res);
-})  
-
+ 
 
 module.exports = router;
