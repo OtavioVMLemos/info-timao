@@ -146,6 +146,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+.kpi span{
+  font-size: larger;
+}
 
 .img{
   display: flex;
@@ -411,19 +414,21 @@ canvas {
   color: #ffffff;
   font-weight: 300;
   font-size: 1.2rem;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .hello h3 span {
-  font-weight: 800;
+  font-size: larger;
 }
 
 .btn-nav {
   width: 40%;
-  color: rgb(0, 0, 0);
+  color: rgb(29, 26, 26);
   background-color: #ffffff;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
+  cursor: pointer;
 }
 
 .btn-nav-white {
@@ -441,7 +446,6 @@ canvas {
   margin: 0;
 }
 
-.btn-nav h3,
 .btn-logout h3 {
   margin: 0;
   padding: 0;

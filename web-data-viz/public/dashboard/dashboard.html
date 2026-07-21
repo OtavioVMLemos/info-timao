@@ -14,6 +14,7 @@
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
     <script src="./../js/quizz.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -38,8 +39,8 @@
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-            <div class="btn-nav">
-                <h3>Gráficos</h3>
+            <div class="btn-nav" onclick="voltarQuiz()">
+                <h3>Quizz</h3>
 
             </div>
 
@@ -57,17 +58,17 @@
 
                 <div class="kpi">
                     <h2>Total de Respostas</h2>
-                    <div id="kpi_total_respostas">0</div>
+                    <span id="kpi_total_respostas">0</span>
                 </div>
 
                 <div class="kpi">
                     <h2>Percentual de Acertos</h2>
-                    <div id="kpi_percentual_acertos">0%</div>
+                    <span id="kpi_percentual_acertos">0%</span>
                 </div>
 
                 <div class="kpi">
                     <h2>Total de Acertos</h2>
-                    <div id="kpi_total_acertos">0</div>
+                    <span id="kpi_total_acertos">0</span>
                 </div>
 
             </div>
@@ -306,28 +307,22 @@
     }
 </script> -->
 
+
 <script>
 
+    function voltarQuiz(){
+        setTimeout(function () {
+
+                window.location = "quizz.html";
+
+            }, 0);
+    }
+
+
     console.log(sessionStorage.getItem("ID_USUARIO"))
-    fetch("/dashboard/totalAcertos", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            fkUsuarioServer : sessionStorage.getItem("ID_USUARIO")
-        })
-    })
-        .then(resposta => resposta.json())
-        .then(dados => {
 
-            console.log(dados);
 
-            kpi_total_acertos.innerHTML = dados[0].totalAcertos;
-        });
-        
-        
-        fetch("/dashboard/percentualAcertos", {
+     fetch("/dashboard/buscarNome", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -339,61 +334,127 @@
         .then(resposta => resposta.json())
         .then(dados => {
 
-            console.log(dados);
+         console.log(dados);
+         
 
-            kpi_percentual_acertos.innerHTML = dados[0].percentualAcertos;
+         b_usuario.innerHTML = dados[0].nome; 
+        //     document.getElementById("kpi_total_acertos").innerHTML =
+        // dados[0].totalAcertos;
         });
-        
-        fetch("/dashboard/totalRespostas", {
+
+
+    fetch("/dashboard/totalAcertos", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            fkUsuarioServer : sessionStorage.getItem("ID_USUARIO")
+            fkUsuarioServer: sessionStorage.getItem("ID_USUARIO")
         })
     })
         .then(resposta => resposta.json())
         .then(dados => {
 
-            console.log(dados);
+         console.log(dados);
+
+         kpi_total_acertos.innerHTML = dados[0].totalAcertos; 
+        //     document.getElementById("kpi_total_acertos").innerHTML =
+        // dados[0].totalAcertos;
+        });
+
+
+    fetch("/dashboard/percentualAcertos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fkUsuarioServer: sessionStorage.getItem("ID_USUARIO")
+        })
+    })
+         .then(resposta => resposta.json())
+         .then(dados => {
+
+             console.log(dados);
+
+        kpi_percentual_acertos.innerHTML = dados[0].percentualAcertos + "%";
+    //         document.getElementById("kpi_percentual_acertos").innerHTML =
+    // dados[0].percentualAcertos;
+        });
+        
+        
+    fetch("/dashboard/totalRespostas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fkUsuarioServer: sessionStorage.getItem("ID_USUARIO")
+        })
+    })
+         .then(resposta => resposta.json())
+         .then(dados => {
+
+             console.log(dados);
 
             kpi_total_respostas.innerHTML = dados[0].totalRespostas;
+
+    //         document.getElementById("kpi_total_respostas").innerHTML =
+    // dados[0].totalRespostas;
         });
 
-    fetch("/dashboard/grafico/DadosDashboard")
-        .then((resposta) => resposta.json())
-        .then((resposta) => {
-            const traducao = {
-                "Ótimo": { label: "Muito Bom", cor: "#00C853" },
-                "Bom": { label: "Bom", cor: "#64DD17" },
-                "Regular": { label: "Regular", cor: "#FFD600" },
-                "Ruim": { label: "Ruim", cor: "#FF6D00" },
-                "Horrível": { label: "Horrível", cor: "#D50000" },
-            };
 
-            let labels = [], quantidade = [], cores = [];
+        fetch("/dashboard/comparacaoAcertosErros", {
+    method: "POST",
 
-            for (let i = 0; i < resposta.length; i++) {
-                let nota = resposta[i].notaPartida;
-                let info = traducao[nota];
-                labels.push(info ? info.label : nota);
-                cores.push(info ? info.cor : "#999999");
-                quantidade.push(resposta[i].quantidade);
-            }
+    headers: {
+        "Content-Type": "application/json"
+    },
 
-            new Chart(document.getElementById('grafico'), {
-                type: 'pie',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Resultados',
-                        data: quantidade,
-                        backgroundColor: cores,
-                        borderWidth: 1
-                    }]
-                },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
-        });
+    body: JSON.stringify({
+        fkUsuarioServer: sessionStorage.getItem("ID_USUARIO")
+    })
+})
+.then(resposta => resposta.json())
+// .then(dados => {
+
+
+    
+    
+    
+        // fetch("/dashboard/grafico/DadosDashboard")
+        // .then((resposta) => resposta.json())
+        // .then((resposta) => {
+        //     const traducao = {
+        //         "Ótimo": { label: "Muito Bom", cor: "#00C853" },
+        //         "Bom": { label: "Bom", cor: "#64DD17" },
+        //         "Regular": { label: "Regular", cor: "#FFD600" },
+        //         "Ruim": { label: "Ruim", cor: "#FF6D00" },
+        //         "Horrível": { label: "Horrível", cor: "#D50000" },
+        //     };
+
+        //     let labels = [], quantidade = [], cores = [];
+
+        //     for (let i = 0; i < resposta.length; i++) {
+        //         let nota = resposta[i].notaPartida;
+        //         let info = traducao[nota];
+        //         labels.push(info ? info.label : nota);
+        //         cores.push(info ? info.cor : "#999999");
+        //         quantidade.push(resposta[i].quantidade);
+        //     }
+
+        //     new Chart(document.getElementById('grafico'), {
+        //         type: 'pie',
+        //         data: {
+        //             labels: labels,
+        //             datasets: [{
+        //                 label: 'Resultados',
+        //                 data: quantidade,
+        //                 backgroundColor: cores,
+        //                 borderWidth: 1
+        //             }]
+        //         },
+        //         options: { responsive: true, maintainAspectRatio: false }
+        //     });
+        // });
 </script>

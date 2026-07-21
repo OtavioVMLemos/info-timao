@@ -3,7 +3,9 @@ var router = express.Router();
 
 var dashboardController = require("../controllers/dashboardController");
 
-
+router.post("/buscarNome", function (req, res) {
+    dashboardController.buscarUsuario(req, res);
+});
 
 router.post("/totalRespostas", function (req, res) {
     dashboardController.buscarKpiTotalRespostas(req, res);
@@ -24,5 +26,7 @@ router.post("/comparacaoAcertosErros", function (req, res) {
 router.post("/evolucaoAcertos", function (req, res) {
     dashboardController.buscarEvolucaoAcertos(req, res);
 });
+
+
 
 module.exports = router;

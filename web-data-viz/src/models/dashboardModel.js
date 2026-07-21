@@ -1,6 +1,17 @@
 var database = require("../database/config")
 
-function buscarKpiTotalRespostas() {
+function buscarUsuario(fkUsuario) {
+     var instrucaoSql = `
+        SELECT nome
+        FROM usuarios
+        WHERE idUsuario = ${fkUsuario};
+    `;
+
+    return database.executar(instrucaoSql);
+}
+
+
+function buscarKpiTotalRespostas(fkUsuario) {
         var instrucaoSql = `
         SELECT COUNT(*) AS totalRespostas
         FROM resposta_usuario
@@ -10,10 +21,10 @@ function buscarKpiTotalRespostas() {
     return database.executar(instrucaoSql);
 }
 
-function buscarKpiPercentualAcertos() {
+function buscarKpiPercentualAcertos(fkUsuario) {
       var instrucaoSql = `
         SELECT 
-            AVG(acertou) * 100 AS percentualAcertos
+            ROUND (AVG(acertou) * 100, 1) AS percentualAcertos
         FROM resposta_usuario
         WHERE fkUsuario = ${fkUsuario};
     `;
@@ -61,6 +72,7 @@ function buscarEvolucaoAcertos(fkUsuario){
 
 
 module.exports = {
+    buscarUsuario,
     buscarKpiTotalRespostas,
     buscarKpiPercentualAcertos,
     buscarKpiTotalAcertos,

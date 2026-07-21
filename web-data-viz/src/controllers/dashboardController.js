@@ -1,10 +1,29 @@
 var dashboardModel = require("../models/dashboardModel");
 
 
+function buscarUsuario(req, res) {
+    
+    
+    var fkUsuario = req.body.fkUsuarioServer;
+
+     if (!fkUsuario) {
+    return res.status(400).send("Usuário não identificado!");
+     }
+
+    dashboardModel.buscarUsuario(fkUsuario)
+        .then(dados => {
+            res.json(dados);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+
+}
+
 
 function buscarKpiTotalRespostas(req, res) {
     console.log(req.body)
-    console.log(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa)
     var fkUsuario = req.body.fkUsuarioServer;
     console.log(fkUsuario)
     if (!fkUsuario) {
@@ -100,6 +119,7 @@ function buscarEvolucaoAcertos(req, res) {
 
 
 module.exports = {
+    buscarUsuario,
     buscarKpiTotalRespostas,
     buscarKpiPercentualAcertos,
     buscarKpiTotalAcertos,
