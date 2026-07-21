@@ -15,6 +15,7 @@
     <script src="./../js/alerta.js"></script>
     <script src="./../js/quizz.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -71,6 +72,15 @@
                     <span id="kpi_total_acertos">0</span>
                 </div>
 
+            </div>
+            <div class="grafico">
+              <div class="grafico">
+                <canvas id="graficoAcertosErros"></canvas>
+              </div>
+
+             <div class="grafico">
+                <canvas id="graficoEvolucao"></canvas>
+             </div>
             </div>
         </div>
     </div>
@@ -310,12 +320,8 @@
 
 <script>
 
-    function voltarQuiz(){
-        setTimeout(function () {
-
-                window.location = "quizz.html";
-
-            }, 0);
+    function voltarQuiz() {
+    window.location = "/quizz.html";
     }
 
 
@@ -402,8 +408,6 @@
     //         document.getElementById("kpi_total_respostas").innerHTML =
     // dados[0].totalRespostas;
         });
-
-
         fetch("/dashboard/comparacaoAcertosErros", {
     method: "POST",
 
@@ -416,7 +420,288 @@
     })
 })
 .then(resposta => resposta.json())
+.then(dados => {
+
+    console.log("Dados comparação:", dados);
+
+    let acertos = dados[0].acertos;
+    let erros = dados[0].erros;
+
+    let ctx = document
+        .getElementById("graficoAcertosErros");
+
+    new Chart(ctx, {
+    type: "bar",
+
+    data: {
+        labels: ["Acertos", "Erros"],
+
+        datasets: [{
+            label: "Comparação Acertos/Erros",
+
+            data: [
+                dados[0].acertos,
+                dados[0].erros
+            ],
+
+            backgroundColor: [
+                "black",
+                "red"
+            ],
+
+            borderColor: [
+                "black",
+                "red"
+            ],
+
+            borderWidth: 2
+        }]
+    }
+});
+
+});
+
+  fetch("/dashboard/evolucaoAcertos", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            fkUsuarioServer: sessionStorage.getItem("ID_USUARIO")
+
+        })
+
+    })
+
+    .then(resposta => resposta.json())
+    .then(dados => {
+
+        let datas = [];
+        let acertos = [];
+        let erros = [];
+
+
+        for (let i = 0; i < dados.length; i++) {
+            datas.push(dados[i].data);
+            acertos.push(dados[i].acertos);
+            erros.push(dados[i].erros);
+
+        }
+        const ctx =
+            document.getElementById("graficoEvolucao");
+        new Chart(ctx, {
+
+            type: "line",
+
+            data: {
+
+                labels: datas,
+
+                datasets: [
+
+                    {
+
+                        label: "Acertos",
+
+                        data: acertos, 
+
+                        backgroundColor: "#000000",
+
+                        borderColor: "#000000",
+
+                    },
+
+                    {
+
+                        label: "Erros",
+
+                        data: erros,
+
+                        borderColor: "#E30613",
+
+                        backgroundColor: "#E30613",
+
+                    },  
+                ]
+
+            }
+
+        });
+
+    });
+
 // .then(dados => {
+
+//          fetch("/dashboard/comparacaoAcertosErros", {
+//     method: "POST",
+
+//     headers: {
+//         "Content-Type": "application/json"
+//     },
+
+//     body: JSON.stringify({
+//         fkUsuarioServer: sessionStorage.getItem("ID_USUARIO")
+//     })
+// })
+// .then(resposta => resposta.json())
+// .then(dados => {
+
+//     console.log("Dados comparação:", dados);
+
+//     const acertos = dados[0].acertos;
+//     const erros = dados[0].erros;
+
+//     const ctx = document
+//         .getElementById("graficoAcertosErros");
+
+//     new Chart(ctx, {
+
+//         type: "bar",
+
+//         data: {
+
+//             labels: [
+//                 "Acertos",
+//                 "Erros"
+//             ],
+
+//             datasets: [
+
+//                 {
+//                     label: "Quantidade",
+
+//                     data: [
+//                         acertos,
+//                         erros
+//                     ]
+//                 }
+
+//             ]
+
+//         },
+
+//         options: {
+
+//             responsive: true,
+
+//             plugins: {
+
+//                 legend: {
+//                     display: false
+//                 }
+
+//             },
+
+//             scales: {
+
+//                 y: {
+
+//                     beginAtZero: true,
+
+//                     ticks: {
+//                         stepSize: 1
+//                     }
+
+//                 }
+
+//             }
+
+//         }
+
+//     });
+
+// });   
+
+// fetch("/dashboard/evolucaoAcertos", {
+//     method: "POST",
+
+//     headers: {
+//         "Content-Type": "application/json"
+//     },
+
+//     body: JSON.stringify({
+//         fkUsuarioServer: sessionStorage.getItem("ID_USUARIO")
+//     })
+// })
+// .then(resposta => resposta.json())
+// .then(dados => {
+
+//     console.log("Dados evolução:", dados);
+
+//     const datas = [];
+//     const acertos = [];
+//     const erros = [];
+
+//     for (let i = 0; i < dados.length; i++) {
+
+//         datas.push(dados[i].data);
+
+//         acertos.push(dados[i].acertos);
+
+//         erros.push(dados[i].erros);
+
+//     }
+
+//     const ctx = document
+//         .getElementById("graficoEvolucao");
+
+//     new Chart(ctx, {
+
+//         type: "line",
+
+//         data: {
+
+//             labels: datas,
+
+//             datasets: [
+
+//                 {
+//                     label: "Acertos",
+
+//                     data: acertos,
+
+//                     tension: 0.3
+//                 },
+
+//                 {
+//                     label: "Erros",
+
+//                     data: erros,
+
+//                     tension: 0.3
+//                 }
+
+//             ]
+
+//         },
+
+//         options: {
+
+//             responsive: true,
+
+//             scales: {
+
+//                 y: {
+
+//                     beginAtZero: true,
+
+//                     ticks: {
+//                         stepSize: 1
+//                     }
+
+//                 }
+
+//             }
+
+//         }
+
+//     });
+
+// });
 
 
     
