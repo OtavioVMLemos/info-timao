@@ -331,7 +331,7 @@ function pergunta5() {
             console.log(texto);
             setTimeout(function () {
 
-                window.location = "dashboard.html";
+                window.location = "./dashboard/dashboard.html";
 
             }, 0);
         })

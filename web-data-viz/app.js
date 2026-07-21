@@ -72,7 +72,7 @@ var app = express();
 
 var usuarioRouter = require("./src/routes/usuarios");
 var quizzRouter = require("./src/routes/quizz")
-// var dashboardRouter = require("./src/routes/dashboard")
+var dashboardRouter = require("./src/routes/dashboard")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -82,7 +82,7 @@ app.use(cors());
 
 app.use("/usuarios", usuarioRouter);
 app.use("/quizz", quizzRouter)
-// app.use("/dashboard", dashboardRouter)
+app.use("/dashboard", dashboardRouter)
 
 
 app.listen(PORTA_APP, function () {
