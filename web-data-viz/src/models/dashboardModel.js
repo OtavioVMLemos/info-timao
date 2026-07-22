@@ -58,12 +58,12 @@ function buscarComparacaoAcertosErros(fkUsuario){
 function buscarEvolucaoAcertos(fkUsuario){
       var instrucaoSql = `
         SELECT
-            DATE(dataRealizacao) AS data,
+            DATE_FORMAT(dataRealizacao, '%d/%m/%Y') AS data,
             SUM(acertou = 1) AS acertos,
             SUM(acertou = 0) AS erros
         FROM resposta_usuario
         WHERE fkUsuario = ${fkUsuario}
-        GROUP BY DATE(dataRealizacao)
+        GROUP BY DATE_FORMAT(dataRealizacao, '%d/%m/%Y')
         ORDER BY data;
     `;
 

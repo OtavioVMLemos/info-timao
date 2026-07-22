@@ -120,7 +120,7 @@ body {
   position: relative;
   top: 0;
   left: 20%;
-  background-color: #ffffff;
+  background-color: #535353;
   height: 100vh;
   overflow: auto;
 }
@@ -147,8 +147,10 @@ body {
     align-items: center;
 }
 .kpi span{
-  font-size: larger;
+  font-size: large;
+
 }
+
 
 .img{
   display: flex;
@@ -481,7 +483,7 @@ canvas {
 }
 
 .grafico canvas{
-      width: 45%;
+    width: 45%;
     height: 400px;
     border: 3px solid rgb(0, 0, 0);
     border-radius: 15px;
